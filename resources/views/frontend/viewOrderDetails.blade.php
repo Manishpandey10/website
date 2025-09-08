@@ -220,7 +220,7 @@
                                             if ($variants->isNotEmpty()) {
                                                 $productVariants = $variants->where('product_id', $item->product_id);
 
-                                                // If no size match, try to match by color_id (if available in order item)
+                                                // Itry to match by color_id
                                                 if (!$specificVariant && isset($item->color_id) && $item->color_id) {
                                                     $specificVariant = $productVariants
                                                         ->where('color_id', $item->color_id)

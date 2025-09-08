@@ -62,7 +62,7 @@ class CheckoutController extends Controller
             return view('frontend.cart', compact('cartdata', 'total', 'subtotal', 'tax', 'count'));
         }
     }
-
+//to remove item from cart
     public function delete($rowId)
     {
         // dd($rowId);
@@ -71,94 +71,7 @@ class CheckoutController extends Controller
         session()->flash('removeItem', 'item removed from cart.');
         return redirect()->back();
     }
-    // function to simply add the product to the cart without no pop ups...
-    // public function quickadd($product_id)
-    // {
-    //     try {
-    //         $product = Products::with(['products_category'])->find($product_id);
 
-    //         if (!$product) {
-    //             return response()->json([
-    //                 'success' => false,
-    //                 'message' => 'Product not found'
-    //             ], 404);
-    //         }
-
-    //         $variantdata = Variant::with('color')
-    //             ->where('product_id', $product_id)->get();
-
-    //         // dd($variantdata);
-    //         $variantIds = $variantdata->pluck('product_id')->toArray();
-
-
-    //         $variantImage = VariantImage::where('product_id', $product_id)
-    //             ->get();
-
-    //         $actualPrice = $variantdata->price - $variantdata->discountedPrice;
-
-    //         // Cart::add(
-    //         //     $product->id,
-    //         //     $product->name,
-    //         //     1,
-    //         //     $actualPrice,
-    //         //     [
-    //         //         'size' => $variantdata->size,
-    //         //         'image' => $variantImage,
-    //         //         "Variantdata" => $variantdata
-    //         //     ]
-    //         // );
-
-    //         // return response()->json([
-    //         //     'success' => true,
-    //         //     'message' => 'Product has been added to cart successfully!',
-    //         //     'cart_count' => Cart::count() // Optional: return cart count for updating UI
-    //         // ]);
-    //         $img = $product->firstVariantImage?->name;
-    //         $imgPath =
-    //             $img && file_exists(public_path('variantThumbnail/' . $img))
-    //             ? url('variantThumbnail/' . $img)
-    //             : asset('images/no-image.jpg');
-
-    //         // $productDetails = [
-    //         //     'name' => $product->name,
-    //         //     'image' => $imgPath, // Use the correct path to the product image
-    //         //     'price' => $actualPrice,
-    //         //     'discount'=>$variantdata->discount,
-    //         //     'actualprice'=>$variantdata->price
-    //         // ];
-    //         $productDetails = [
-    //             'name' => $product->name,
-    //             'image' => $imgPath,
-    //             'price' => $actualPrice,
-    //             'discount' => $variantdata->discount,
-    //             'actualprice' => $variantdata->price,
-    //             'variants' => Variant::with('color')
-    //                 ->where('product_id', $product_id)
-    //                 ->get()
-    //                 ->map(function ($v) {
-    //                     return [
-    //                         'color' => $v->color->colorCode,
-    //                         'image' => url('variantThumbnail/' . $v->image),
-    //                         // 'sizes'=>$v->
-    //                     ];
-    //                 })
-    //         ];
-
-
-    //         return response()->json([
-    //             'success' => true,
-    //             'message' => 'Product has been added to cart successfully!',
-    //             'cart_count' => Cart::count(),
-    //             'product_details' => $productDetails
-    //         ]);
-    //     } catch (\Exception $e) {
-    //         return response()->json([
-    //             'success' => false,
-    //             'message' => 'Something went wrong. Please try again.'
-    //         ], 500);
-    //     }
-    // }
-    // simple functionn ends here 
 
     public function quickadd($product_id)
     {
@@ -194,7 +107,6 @@ class CheckoutController extends Controller
                 ? url('variantThumbnail/' . $img)
                 : asset('images/no-image.jpg');
 
-            // Build product details payload
             $productDetails = [
                 'name'        => $product->name,
                 'image'       => $imgPath,
@@ -286,7 +198,7 @@ class CheckoutController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Product has been added to cart successfully!',
-                'cart_count' => Cart::count() // Optional: return cart count for updating UI
+                'cart_count' => Cart::count()
             ]);
         } catch (\Exception $e) {
             return response()->json([
