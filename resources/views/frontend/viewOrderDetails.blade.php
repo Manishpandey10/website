@@ -225,7 +225,7 @@
                                                     $specificVariant = $productVariants
                                                         ->where('color_id', $item->color_id)
                                                         ->first();
-                                                        // dd('specified varaiant', $specificVariant);
+                                                        // dd('specified varaiant','specified varaint id:'.$specificVariant->id ,$specificVariant);
                                                 }
 
                                                 // Fallback to first variant of the product
