@@ -29,7 +29,7 @@ class LoginController extends Controller
             $user = Auth::user();
 
             if (Auth::user()->role_id == 2) {
-                return redirect()->intended(route('checkout.page'))->with('UserLogin', 'Welcome Back user, continue shopping...');
+                return redirect()->intended(route('home'))->with('UserLogin', 'Welcome Back user, continue shopping...');
             } else {
 
                 Auth::logout();

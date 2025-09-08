@@ -11,25 +11,6 @@ use Illuminate\Http\Request;
 
 class HandleActionController extends Controller
 {
-    // public function viewImage($id)
-    // {
-    //     $productdata = Products::find($id);
-    //     $imageData = Image::where('product_id', $id)->get();
-    //     $variantImageData = VariantImage::where('product_id', $id)->get();
-    //     // dd($variantImageData);
-    //     $colorIds = $variantImageData->pluck('color_id')->unique();
-    //     dd($colorIds);
-
-    //     $colorData = Color::whereIn('id', $colorIds)->get();
-    //     // dd($colorData);
-
-    //     return view('admin.product.handleImage', compact(
-    //         'imageData',
-    //         'productdata',
-    //         'variantImageData',
-    //         'colorData'
-    //     ));
-    // }
     
     public function viewImage($id)
     {
@@ -64,33 +45,7 @@ class HandleActionController extends Controller
 
         return view('admin.product.editImage', compact('imageData', 'productdata'));
     }
-    // public function updateImages(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'productthumbnail.*' => 'nullable',
-    //     ]);
-
-    //     $updateImage = Products::find($id);
-
-
-
-    //     if ($files = $request->file('productthumbnail')) {
-    //         foreach ($files as $file) {
-    //             $extension = $file->getClientOriginalExtension();
-    //             $filename = time() . '-' . uniqid() . '.' . $extension;
-    //             $file->move(public_path('/ProductThumbnail'), $filename);
-
-    //             $updateImage = new Image();
-    //             $updateImage->name = $filename;
-    //             $updateImage->product_id = $id;
-
-    //                dd($updateImage);
-    //             $updateImage->save();
-    //         }
-    //     }
-    //     return redirect()->route('manage.product')->with('imageUpdated', 'Product images has been updated');
-    // }
-
+   
     public function updateImages(Request $request, $id)
     {
         $request->validate([

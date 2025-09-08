@@ -62,7 +62,7 @@ class CheckoutController extends Controller
             return view('frontend.cart', compact('cartdata', 'total', 'subtotal', 'tax', 'count'));
         }
     }
-//to remove item from cart
+
     public function delete($rowId)
     {
         // dd($rowId);
@@ -107,6 +107,7 @@ class CheckoutController extends Controller
                 ? url('variantThumbnail/' . $img)
                 : asset('images/no-image.jpg');
 
+            // Build product details payload
             $productDetails = [
                 'name'        => $product->name,
                 'image'       => $imgPath,
@@ -198,7 +199,7 @@ class CheckoutController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Product has been added to cart successfully!',
-                'cart_count' => Cart::count()
+                'cart_count' => Cart::count() // Optional: return cart count for updating UI
             ]);
         } catch (\Exception $e) {
             return response()->json([
