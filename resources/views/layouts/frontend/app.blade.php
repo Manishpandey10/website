@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/libs.bundle.css') }}" />
     <!-- Main CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/theme.bundle.css') }}" />
+    <!-- Bootstrap Bundle JS (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Google Fonts-->
     <link rel="preconnect" href="{{ url('https://fonts.googleapis.com') }}">
@@ -413,7 +415,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item">
                                         @if ($isLoggedIn)
                                             Hi there, {{ Auth::user()->name }}
                                         @else
@@ -426,7 +428,6 @@
                                 </li>
 
                                 @if ($isLoggedIn)
-                                    <!-- Logout (POST recommended in Laravel) -->
                                     <li>
                                         <a href="{{ route('view.order') }}">
                                             <button type="submit" class="dropdown-item text-danger">

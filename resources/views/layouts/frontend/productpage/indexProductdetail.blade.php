@@ -26,6 +26,8 @@
     {{-- <link rel="mask-icon" href="{{ asset('assets/favicon/safari-pinned-tab.svg') }}" color="#5bbad5"> --}}
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#6d6d6d">
+    <!-- Bootstrap Bundle JS (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/libs.bundle.css') }}" />
