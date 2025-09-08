@@ -806,6 +806,32 @@
     </div>
     @push('scripts')
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            function showToast(type, message) {
+                // You can enhance this however you want
+                const toast = document.createElement('div');
+                toast.className = `toast align-items-center text-white bg-${type} border-0 show`;
+                toast.role = 'alert';
+                toast.ariaLive = 'assertive';
+                toast.ariaAtomic = 'true';
+                toast.style.position = 'fixed';
+                toast.style.bottom = '1rem';
+                toast.style.right = '1rem';
+                toast.style.zIndex = '1055';
+                toast.innerHTML = `
+            <div class="d-flex">
+                <div class="toast-body">${message}</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        `;
+                document.body.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    toast.remove();
+                }, 3000);
+            }
+        </script>
 
         <script>
             // CSRF token for Laravel
@@ -943,45 +969,45 @@
             });
 
             // Toast notification function - Bottom Right Position
-
-
-
-
-            <
-            script >
-                document.addEventListener("DOMContentLoaded", function() {
-                    const selectSize = document.getElementById('selectSize');
-                    const addToCartBtn = document.getElementById('addToCartBtn');
-
-                    // If Choices.js is already initialized globally, don't re-init
-                    let choices;
-                    if (!selectSize.dataset.choicesInit) {
-                        choices = new Choices(selectSize);
-                        selectSize.dataset.choicesInit = "true";
-                    }
-
-                    function updateCartLink(size) {
-                        console.log("Selected size:", size);
-
-                        if (size) {
-                            let baseUrl = "{{ url('/add-to-cart/' . $product->id . '/' . $selectedColor->color->id) }}";
-                            addToCartBtn.href = baseUrl + '/' + size;
-                        } else {
-                            addToCartBtn.href = "#";
-                        }
-                    }
-
-                    // Choices.js fires "change" on the element
-                    selectSize.addEventListener('change', function(event) {
-                        // Try Choices.js format first, fallback to normal select
-                        let size = event.detail && event.detail.value ?
-                            event.detail.value :
-                            event.target.value;
-
-                        updateCartLink(size);
-                    });
-                });
         </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const selectSize = document.getElementById('selectSize');
+                const addToCartBtn = document.getElementById('addToCartBtn');
+
+                // If Choices.js is already initialized globally, don't re-init
+                let choices;
+                if (!selectSize.dataset.choicesInit) {
+                    choices = new Choices(selectSize);
+                    selectSize.dataset.choicesInit = "true";
+                }
+
+                function updateCartLink(size) {
+                    console.log("Selected size:", size);
+
+                    if (size) {
+                        let baseUrl = "{{ url('/add-to-cart/' . $product->id . '/' . $selectedColor->color->id) }}";
+                        addToCartBtn.href = baseUrl + '/' + size;
+                    } else {
+                        addToCartBtn.href = "#";
+                    }
+                }
+
+                // Choices.js fires "change" on the element
+                selectSize.addEventListener('change', function(event) {
+                    // Try Choices.js format first, fallback to normal select
+                    let size = event.detail && event.detail.value ?
+                        event.detail.value :
+                        event.target.value;
+
+                    updateCartLink(size);
+                });
+            });
+        </script>
+
+
+
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const colorInputs = document.querySelectorAll('.form-check-color-input');
