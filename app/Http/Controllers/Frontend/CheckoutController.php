@@ -445,21 +445,7 @@ class CheckoutController extends Controller
             ]);
 
             // dd($cartdata);
-            // Store checkout data in session for later use - convert cart to array properly
-            // $cartArray = [];
-            // foreach ($cartdata as $item) {
-            //     $cartArray[] = [
-            //         'id' => $item->id,
-            //         'name' => $item->name,
-            //         'qty' => $item->qty,
-            //         'price' => $item->price,
-            //         'options' => [
-            //             'image' => $item->options->image ?? null,
-            //             'Size' => $item->options->Size ?? null,
-            //             'color_id' => $item->options->image->color_id ?? null,
-            //         ]
-            //     ];
-            // }
+          
 
             $cartArray = [];
             foreach ($cartdata as $item) {
