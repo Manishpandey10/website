@@ -12,7 +12,6 @@ use App\Models\OrderItem;
 use App\Models\Products;
 use App\Models\Variant;
 use App\Models\VariantImage;
-use Dotenv\Exception\ValidationException;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +20,6 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException as ValidationValidationException;
 use Razorpay\Api\Api;
 use Razorpay\Api\Errors\SignatureVerificationError;
-use Surfsidemedia\Shoppingcart\Cart as ShoppingcartCart;
 use Surfsidemedia\Shoppingcart\Facades\Cart as Cart;
 
 class CheckoutController extends Controller
