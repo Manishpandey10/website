@@ -3,6 +3,9 @@
 /public/build
 /public/hot
 /public/storage
+/public/admin_assets
+/public/public
+
 /storage/*.key
 /vendor
 .env
@@ -22,4 +25,4 @@ yarn-error.log
 /public/SuitableFor
 /public/variantThumbnail
 /database
-/public
+# /public
